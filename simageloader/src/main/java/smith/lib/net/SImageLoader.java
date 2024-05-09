@@ -60,10 +60,6 @@ public class SImageLoader {
         });
     }
 
-    public interface OnErrorLoadListener {
-        void onError(LoadImageException error);
-    }
-
     public static class LoadImageException extends Exception {
         public LoadImageException(String message) {
             super(message);

@@ -26,7 +26,7 @@ public class SImageLoader {
     /**
      * init the loader class with the current context you used with.
      * @param activity the current context you want to load images in.
-     * @return a new instance of {@link SImageLoader}
+     * @return a new instance of {@link SImageLoader}.
      */
     @NonNull
     public static SImageLoader with(Activity activity) {
@@ -35,21 +35,40 @@ public class SImageLoader {
         return loader;
     }
 
+    /**
+     * set the url of the image you want to load.
+     * @param url the url of the image you want to load.
+     * @return the same instance of the {@link SImageLoader}.
+     */
     public SImageLoader load(String url) {
         this.url = url;
         return this;
     }
 
+    /**
+     * set the default image to be shown in your image view while loading the image from url or in nay other case.
+     * @param placeholder the default image while loading the url.
+     * @return the same instance of {@link  SImageLoader}.
+     */
     public SImageLoader placeholder(int placeholder) {
         this.placeholder = placeholder;
         return this;
     }
 
+    /**
+     * set a callback to catch error while loading the image from url.
+     * @param listener the callback using {@link OnErrorLoadListener}.
+     * @return the same instance of {@link SImageLoader}.
+     */
     public SImageLoader onErrorLoadingImage(OnErrorLoadListener listener) {
         this.listener = listener;
         return this;
     }
 
+    /**
+     * load the image and show it in the {@link ImageView} used.
+     * @param imageView the image view you want to show the image in.
+     */
     public void into(ImageView imageView) {
         loadImage(imageView);
     }

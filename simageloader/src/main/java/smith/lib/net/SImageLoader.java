@@ -8,6 +8,13 @@ import androidx.annotation.NonNull;
 import java.net.*;
 import java.util.concurrent.Executors;
 
+import smith.lib.net.callbacks.OnErrorLoadListener;
+import smith.lib.net.exceptions.LoadImageException;
+
+/**
+ * {@code  Glide-like} class to load images from the net.
+ * with fast and new single isolated thread to maintain <b>app's performance</b>.
+ */
 public class SImageLoader {
 
     private Activity activity;
@@ -16,6 +23,11 @@ public class SImageLoader {
     private OnErrorLoadListener listener;
     private int placeholder = R.drawable.downloading;
 
+    /**
+     * init the loader class with the current context you used with.
+     * @param activity the current context you want to load images in.
+     * @return a new instance of {@link SImageLoader}
+     */
     @NonNull
     public static SImageLoader with(Activity activity) {
         SImageLoader loader = new SImageLoader();

@@ -1,4 +1,4 @@
-package smith.lib.net.simageloader;
+package smith.lib.net.test;
 
 import org.junit.Test;
 

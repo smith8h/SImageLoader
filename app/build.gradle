@@ -3,17 +3,16 @@ plugins {
 }
 
 android {
-    namespace 'smith.lib.net.simageloader'
+    namespace 'smith.app.test'
     compileSdk 34
+    buildToolsVersion '34.0.0'
 
     defaultConfig {
-        applicationId "smith.lib.net.simageloader"
+        applicationId "smith.app.test"
         minSdk 24
         targetSdk 34
         versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionName "1.0.0"
     }
 
     buildTypes {
@@ -22,21 +21,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
-
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
-
     implementation project(':simageloader')
 }

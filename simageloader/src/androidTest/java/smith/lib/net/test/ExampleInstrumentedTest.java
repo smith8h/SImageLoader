@@ -1,4 +1,4 @@
-package smith.lib.net.simageloader;
+package smith.lib.net.test;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("smith.lib.net.simageloader", appContext.getPackageName());
+        assertEquals("smith.lib.net.simageloader.test", appContext.getPackageName());
     }
 }

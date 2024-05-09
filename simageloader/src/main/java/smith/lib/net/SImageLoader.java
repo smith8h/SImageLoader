@@ -59,10 +59,4 @@ public class SImageLoader {
             });
         });
     }
-
-    public static class LoadImageException extends Exception {
-        public LoadImageException(String message) {
-            super(message);
-        }
-    }
 }

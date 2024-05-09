@@ -60,21 +60,71 @@ To create a connection first pass a context using `with()` method:
     SImageLoader.with(context)
 ```
 
-Then pass the callback interface to deal with the response using `callback()` method:
+**(Optional)** Then pass the callback interface to deal with the error using `onErrorLoadingImage()` method:
 
 ```java
-    SImageLoader.with(context).callback(new SConnectCallBack() {
+    SImageLoader.with(context).onErrorLoadingImage(new OnErrorLoadListener() {
         @Override
-        public void onFailure(SResponse response, String tag) {}
+        public void onError(LoadImageException error) {
             
-        @Override
-        public void onSuccess(SResponse response, String tag, Map<String, Object> responseHeaders) {
-            // use response, tag, responseHeaders
-            if (response.isJSON() && response.isMap()) {
-                Toast.makeText(context, response.getMap().getString("key"), Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(context, response.toString(), Toast.LENGTH_SHORT).show();
-            }
         }
     })
 ```
+
+**(Optional)** After that, if you need to add a default placeholder using methods:
+
+```java
+    .placeholder(R.drawable.placeholder)
+```
+
+then pass the url of the image using `load()` method:
+
+```java
+    .load("url")
+```
+
+And finally, set the imageview you want the image to be loaded on.
+
+```java
+    .into(imageview)
+```
+
+## Example Code
+
+• connections doesn't need params/headers:
+
+```java
+    SImageLoader.with(this)
+        .load("https://avatars.githubusercontent.com/u/70884742?v=4")
+        .placeholder(R.drawable.downloading)
+        .onErrorLoadingImage((error) -> Log.e("Error", error.getMessage()))
+        .into(imageView);
+```
+
+<br/>
+
+## Donations
+
+> If you would like to support this project's further development, the creator of this projects or the continuous maintenance of the project **feel free to donate**.
+Your donation is highly appreciated. Thank you!
+
+<br/>
+
+You can **choose what you want to donate**, all donations are awesome!</br>
+
+<br/>
+
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.me/husseinshakir)
+[![Buy me a coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/HusseinShakir)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/husseinsmith)
+
+<br/>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/smith8h/smith8h/main/20221103_150053.png" style="width: 38%;" alt=""/>
+  <br/>
+  <b>
+    With :heart:
+  </b>
+</p>
+<br/>

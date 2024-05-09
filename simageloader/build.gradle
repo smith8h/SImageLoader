@@ -1,15 +1,17 @@
 plugins {
     alias(libs.plugins.android.library)
+    id 'maven-publish'
 }
 
 android {
-    namespace 'smith.lib.net.simageloader'
+    namespace 'smith.lib.net'
     compileSdk 34
 
     defaultConfig {
         minSdk 24
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionCode 1
+        versionName '1.0.0'
+        multiDexEnabled true
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -19,17 +21,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
-
     implementation libs.appcompat
     implementation libs.material
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
+}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            library(MavenPublication) {
+                setGroupId "smith.lib"
+                setArtifactId "SImageLoader"
+                version android.defaultConfig.versionName
+                artifact bundleReleaseAar
+            }
+        }
+    }
 }
